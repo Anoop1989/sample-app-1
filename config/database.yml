@@ -1,0 +1,23 @@
+
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  reconnect: false
+  host: localhost
+  timeout: 5000
+  prepared_statements: false
+  username:
+  password:
+
+development:
+  <<: *default
+  database: sample-app-1_development
+
+test:
+  <<: *default
+  database: sample-app-1_test
+
+production:
+  <<: *default
+  database: sample-app-1
