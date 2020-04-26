@@ -2,5 +2,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root to: 'welcome#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :payers, only: [:create, :show, :index] do
+    member do
+      post :generate_bill
+    end
+  end
 end
