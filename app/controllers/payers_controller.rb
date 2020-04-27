@@ -19,14 +19,14 @@ class PayersController < ApplicationController
 
   def generate_bill
     begin
-      Bill.create(payer: _payer)
+      @bill = Bill.create(payer: _payer, bill_amount: rand(500), bill_status: 'pending', bill_date:  Time.now.utc)
     rescue PayerNotFound => err
       render_404 err.message and return
     rescue => err
       render_500 err.message and return
     end
 
-    render json: {bill_status: 'generated' }, status: 200
+    render json: {bill_status: 'generated', id: @bill.id, amount: @bill.bill_amount }, status: 200
   end
 
   private

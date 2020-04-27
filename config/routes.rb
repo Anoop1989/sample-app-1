@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :bills, only: [:fetch] do
     collection do
       post :fetch
+      post :fetchReceipt, to: 'bills#fetch_receipt'
     end
   end
 end

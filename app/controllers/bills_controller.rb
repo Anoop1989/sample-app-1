@@ -10,16 +10,33 @@ class InvalidPayloadError < StandardError
   end
 end
 
+class BillNotFoundError < StandardError
+  def message
+    "Invalid bill"
+  end
+end
+
 class BillsController < ApplicationController
   skip_before_action :verify_authenticity_token, if: :json_request?
 
   def fetch
     begin
       valid_service?
-      payer.bills
-    rescue InvalidServiceProviderError => err
+      payer
+    rescue InvalidServiceProviderError, InvalidPayloadError => err
       render_401 err.message and return
-    rescue InvalidPayloadError => err
+    rescue => err
+      render_500 err.message and return
+    end
+  end
+
+  def fetch_receipt
+    begin
+      valid_service?
+      @receipt = payer_bill.generate_receipt service_provider, auth_token
+    rescue BillNotFoundError, InvalidServiceProviderError, InvalidPayloadError => err
+      render_401 err.message and return
+    rescue => err
       render_401 err.message and return
     end
   end
@@ -51,5 +68,13 @@ class BillsController < ApplicationController
 
   def valid_service?
     raise InvalidServiceProviderError if service_provider.nil?
+  end
+
+  def payer_bill
+    begin
+      bill ||= Bill.find(auth_token['billerBillID'])
+    rescue => err
+      raise BillNotFoundError
+    end
   end
 end

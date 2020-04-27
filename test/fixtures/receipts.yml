@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount_paid: 1.5
+  amount_paid_currency_code: MyString
+  bill_id: 1
+  platform_bill_id: MyString
+  external_service_provider_id: 1
+  service_provider_transaction_id: MyString
+  additional_info: 
+  unique_payment_ref_id: MyString
+  generated_at: 2020-04-27 15:13:47
+
+two:
+  amount_paid: 1.5
+  amount_paid_currency_code: MyString
+  bill_id: 1
+  platform_bill_id: MyString
+  external_service_provider_id: 1
+  service_provider_transaction_id: MyString
+  additional_info: 
+  unique_payment_ref_id: MyString
+  generated_at: 2020-04-27 15:13:47
