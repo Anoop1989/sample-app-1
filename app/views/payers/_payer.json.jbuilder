@@ -1,1 +1,1 @@
-json.(payer, :full_name, :address)
+json.(payer, :id, :full_name, :address)

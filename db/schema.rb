@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20200427002301) do
   enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
-    t.integer  "payer_id",       null: false
+    t.integer  "payer_id",                     null: false
     t.date     "bill_date"
-    t.float    "bill_amount"
+    t.float    "bill_amount",    default: 0.0
     t.string   "bill_status"
-    t.float    "payment_amount"
+    t.float    "payment_amount", default: 0.0
     t.date     "payment_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "external_service_providers", force: :cascade do |t|
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20200427002301) do
 
   create_table "payers", force: :cascade do |t|
     t.string   "full_name",  null: false
-    t.text     "address",    null: false
+    t.text     "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
