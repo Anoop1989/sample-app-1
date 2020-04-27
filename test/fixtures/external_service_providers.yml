@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  auth_secret: MyString
+  status: MyString
+  activated_at: 2020-04-27 05:53:01
+
+two:
+  name: MyString
+  auth_secret: MyString
+  status: MyString
+  activated_at: 2020-04-27 05:53:01

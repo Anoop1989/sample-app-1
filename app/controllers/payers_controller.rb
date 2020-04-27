@@ -7,6 +7,7 @@ end
 
 class PayersController < ApplicationController
   skip_before_action :verify_authenticity_token, if: :json_request?
+  before_action :authenticate_service_provider!
 
   def create
     @payer = Payer.create(full_name: "payer#{Payer.count + 1}", address: "address_#{Payer.count + 1}")
