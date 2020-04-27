@@ -1,5 +1,4 @@
 class ExternalServiceProvider < ApplicationRecord
-  attr_reader :auth_id, :auth_secret
 
   before_create :generate_auth_id
   before_create :generate_auth_secret

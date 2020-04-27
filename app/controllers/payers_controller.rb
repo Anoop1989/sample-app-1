@@ -30,9 +30,6 @@ class PayersController < ApplicationController
   end
 
   private
-  def json_request?
-    request.format.json?
-  end
 
   def bill_params
     params.permit(:id)

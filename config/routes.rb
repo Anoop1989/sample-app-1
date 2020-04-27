@@ -8,4 +8,10 @@ Rails.application.routes.draw do
       post :generate_bill
     end
   end
+
+  resources :bills, only: [:fetch] do
+    collection do
+      post :fetch
+    end
+  end
 end

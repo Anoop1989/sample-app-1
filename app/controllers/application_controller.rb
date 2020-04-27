@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  ["404", "500", "403"].each do |error_code|
+  ["404", "500", "403", "401"].each do |error_code|
     define_method("render_#{error_code}") do |_msg|
       @errors = common_response_template.merge({
           error: {
@@ -25,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def common_response_template
     {status: 0, success: true}
+  end
+
+  def json_request?
+    request.format.json?
   end
 end
