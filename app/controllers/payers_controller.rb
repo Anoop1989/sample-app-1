@@ -10,7 +10,7 @@ class PayersController < ApplicationController
   before_action :authenticate_service_provider!
 
   def create
-    @payer = Payer.create(full_name: "payer#{Payer.count + 1}", address: "address_#{Payer.count + 1}")
+    @payer = Payer.create(full_name: "payer#{Payer.count + 1}", address: "address_#{Payer.count + 1}", mobile_number: rand(9000000000..9999999999))
   end
 
   def index
